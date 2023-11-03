@@ -142,8 +142,6 @@ def prepare_dataset(data_path, tokenizer, slot_meta,
                     n_history, max_seq_length, diag_level=False, op_code='4'):
 
     dials = json.load(open(data_path))#打开json文件
-    #取前100个调试
-    dials = dials[:5]
     data = []
     domain_counter = {}
     max_resp_len, max_value_len = 0, 0
