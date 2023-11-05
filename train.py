@@ -259,7 +259,7 @@ if __name__ == "__main__":
 
     parser.add_argument("--random_seed", default=42, type=int)
     parser.add_argument("--num_workers", default=0, type=int)#原本是4
-    parser.add_argument("--batch_size", default=32, type=int)
+    parser.add_argument("--batch_size", default=2, type=int)
     parser.add_argument("--enc_warmup", default=0.1, type=float)
     parser.add_argument("--dec_warmup", default=0.1, type=float)
     parser.add_argument("--enc_lr", default=4e-5, type=float)

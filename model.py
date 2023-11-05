@@ -29,11 +29,11 @@ class ECDGDST(BertPreTrainedModel):
                                                                 op_ids=op_ids,
                                                                 max_update=max_update)
         gen_scores = self.decoder(input_ids,
-                                          decoder_inputs,
-                                          sequence_output,
-                                          pooled_output,
-                                          max_value,
-                                          teacher)
+                                  decoder_inputs,
+                                  sequence_output,
+                                  pooled_output,
+                                  max_value,
+                                  teacher)
         return domain_scores, state_scores, gen_scores
 
 
@@ -53,14 +53,11 @@ class DomainGuide(nn.Module):
         super(DomainGuide, self).__init__()
         self.domain_cls = Domain_cls(config.hidden_size, n_domain, config.dropout)
         self.domain_gate = DomainGate(config.hidden_size)  # 添加的域门
-        # self.action_cls = nn.Linear(config.hidden_size, n_op)  # 操作分类器
-        # self.domain_cls = nn.Linear(config.hidden_size, n_domain)  # domain分类器
         self.n_op = n_op
         self.n_domain = n_domain
         self.update_id = update_id
 
     def forward(self, sequence_output, pooled_output, state_positions, op_ids=None, max_update=None):
-        # domain_scores = self.domain_cls(self.dropout(pooled_output))  # 改动！！！直接进行分类，不在进行判断是否需要分类
         domain_scores = self.domain_cls(pooled_output)
         state_pos = state_positions[:, :, None].expand(-1, -1, sequence_output.size(-1))
         state_output = torch.gather(sequence_output, 1, state_pos)
@@ -98,8 +95,6 @@ class DomainGate(nn.Module):
         C_domain = torch.unsqueeze(C_domain, 1).repeat(1, C_slot.size(1), 1)
         g = torch.unsqueeze(g, -1)
         g = g.repeat(1, 1, C_domain.size(-1))
-        # temp = g * C_domain
-        temp = torch.mul(g, C_domain)
         S = torch.cat((C_slot, temp), -1)
         S = self.s_trans(S)
         return S  # B , T

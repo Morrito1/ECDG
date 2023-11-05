@@ -6,7 +6,7 @@ pytorch-transformers==1.0.0
 torch==1.3.0a0+24ae9b5
 ```
 
-## 数据集下载
+## 数据集
 
 下载的原始数据集放置在`$DOWNLOAD_PATH`文件夹下 ，处理完的数据集放在文件夹 `$TARGET_PATH`下.
 

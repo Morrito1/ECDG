@@ -10,6 +10,7 @@ def per_domain_join_accuracy(data, slot_temp):
         count = 0
         jt = 0
         acc = 0
+
         for k, d in data.items():
             p, g = d
             gg = [r for r in g if r.startswith(dom)]

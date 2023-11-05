@@ -22,7 +22,6 @@ np.random.seed(2)
 Most of the codes are from https://github.com/budzianowski/multiwoz
 '''
 
-
 # GLOBAL VARIABLES
 DICT_SIZE = 400
 MAX_LENGTH = 50

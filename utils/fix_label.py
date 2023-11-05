@@ -62,7 +62,6 @@ def fix_general_label_error(labels, type, slots):
             elif "internet" in slot and label_dict[slot] == "free":
                 label_dict[slot] = "yes"
 
-            # some out-of-define classification slot values
             if  slot == "restaurant-area" and label_dict[slot] in ["stansted airport", "cambridge", "silver street"] or \
                 slot == "attraction-area" and label_dict[slot] in ["norwich", "ely", "museum", "same area as hotel"]:
                 label_dict[slot] = "none"
