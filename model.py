@@ -52,7 +52,7 @@ class DomainGuide(nn.Module):
     def __init__(self, config, n_op, n_domain, update_id):
         super(DomainGuide, self).__init__()
         self.domain_cls = Domain_cls(config.hidden_size, n_domain, config.dropout)
-        self.domain_gate = DomainGate(config.hidden_size,n_domain)  # 添加的域门
+        self.domain_gate = DomainGate(config.hidden_size)  # 添加的域门
         # self.action_cls = nn.Linear(config.hidden_size, n_op)  # 操作分类器
         # self.domain_cls = nn.Linear(config.hidden_size, n_domain)  # domain分类器
         self.n_op = n_op
